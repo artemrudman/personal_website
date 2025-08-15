@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A startup foundation: the unique idea</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <main class="container">
+        <a href="../writings.html" class="back-link">Back to Writings</a>
+<section class="project-details">
+  <h1>Data Analysis with Python</h1>
+
+  <img src="screenshots/1.gif" width="550" alt="Data Analysis Demo">
+
+  <h2>Overview</h2>
+  <p>
+    This repository contains Python scripts for analyzing synthetic demographic data using 
+    <strong>Pandas, NumPy, Seaborn, and Matplotlib</strong>. The dataset includes information 
+    on race, gender, education, employment, and more.
+  </p>
+
+  <h2>Dataset</h2>
+  <pre><code class="language-python">
+from datasets import load_dataset
+dataset = load_dataset("sacrificialpancakes/synthetic_demographics_seed")["train"].to_pandas()
+  </code></pre>
+
+  <hr>
+
+  <h2>Functions and Analysis</h2>
+
+  <h3>1. Dataset Overview</h3>
+  <p><strong>Function:</strong> <code>info_about_dataset(dataframe, column_name_start=0, column_name_end=20, column_num_start=0, column_num_end=100000)</code></p>
+  <ul>
+    <li>Displays dataset size and columns</li>
+    <li>Identifies missing values</li>
+    <li>Shows a random sample of the data</li>
+  </ul>
+
+  <h3>2. Name Popularity Analysis</h3>
+  <p><strong>Function:</strong> <code>get_top_popular_name(dataframe, column_name, amount)</code></p>
+  <ul>
+    <li>Identifies the most common names</li>
+    <li>Displays a bar chart of name frequency</li>
+  </ul>
+  <p><strong>Function:</strong> <code>get_top_popular_name_by(dataframe, column_name_by, column_name_by_num, column_name, amount)</code></p>
+  <ul>
+    <li>Finds the most common names filtered by race or gender</li>
+  </ul>
+
+  <h3>3. Age Distribution by Education</h3>
+  <p><strong>Function:</strong> <code>dist_by_education(dataframe)</code></p>
+  <ul>
+    <li>Analyzes the distribution of ages within different education levels</li>
+    <li>Generates histograms per education category</li>
+  </ul>
+
+  <h3>4. Employment Analysis</h3>
+  <p><strong>Function:</strong> <code>youngest_oldest_employee_by_education(dataframe, education_type)</code></p>
+  <ul>
+    <li>Finds the youngest and oldest employed individuals within an education category</li>
+  </ul>
+  <p><strong>Function:</strong> <code>groping_by_age(dataframe)</code></p>
+  <ul>
+    <li>Groups individuals by age ranges</li>
+    <li>Displays a bar chart of age group distribution</li>
+  </ul>
+  <p><strong>Function:</strong> <code>groping_by_state_and_age(dataframe)</code></p>
+  <ul>
+    <li>Compares age distributions in different states</li>
+  </ul>
+
+  <h3>5. Generational Analysis</h3>
+  <p><strong>Function:</strong> <code>birthdate_to_year(dataframe)</code></p>
+  <ul>
+    <li>Converts birthdate to year of birth</li>
+    <li>Classifies individuals into generations (Gen Z, Millennials, etc.)</li>
+  </ul>
+  <p><strong>Function:</strong> <code>employment_by_generation(dataframe)</code></p>
+  <ul>
+    <li>Compares employment rates across generations</li>
+  </ul>
+
+  <h3>6. Gender & Employment Disparities</h3>
+  <p><strong>Function:</strong> <code>employment_by_sex(dataframe)</code></p>
+  <ul>
+    <li>Analyzes employment rates by gender</li>
+  </ul>
+  <p><strong>Function:</strong> <code>occ_by_gender(dataframe)</code></p>
+  <ul>
+    <li>Displays the top 10 occupation categories per gender</li>
+  </ul>
+
+  <h3>7. Racial & Ethnic Disparities</h3>
+  <p><strong>Function:</strong> <code>occupation_by_education(dataframe, is_include_unemployed=True)</code></p>
+  <ul>
+    <li>Examines whether higher education levels correlate with specific occupations</li>
+  </ul>
+  <p><strong>Function:</strong> <code>edd_by_race(dataframe, parameter_object)</code></p>
+  <ul>
+    <li>Compares education levels across different racial and ethnic groups</li>
+  </ul>
+
+  <hr>
+
+  <h2>How to Run</h2>
+  <ol>
+    <li>Install dependencies:
+      <pre><code class="language-bash">
+pip install numpy pandas datasets seaborn matplotlib
+      </code></pre>
+    </li>
+    <li>Run the script:
+      <pre><code class="language-bash">
+python demographic.py
+      </code></pre>
+    </li>
+  </ol>
+
+  <h2>Visualization Examples</h2>
+  <ul>
+    <li><strong>Bar charts</strong>: Name popularity, employment rates, and educational distributions.</li>
+    <li><strong>Histograms</strong>: Age distribution by education level.</li>
+    <li><strong>Grouped analysis</strong>: Comparisons of employment across demographics.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Future Enhancements</h2>
+  <ul>
+    <li>Add interactive visualizations using <strong>Plotly</strong>.</li>
+    <li>Expand demographic filters.</li>
+    <li>Improve performance on large datasets.</li>
+  </ul>
+
+  <p>Feel free to contribute! 🚀</p>
+</section>
+
+    </main>
+    <script src="../scripts/header.js"></script>
+    <script src="../scripts/main.js"></script>
+</body>
+</html> 
