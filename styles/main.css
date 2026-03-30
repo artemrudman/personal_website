@@ -51,7 +51,7 @@ body {
 }
 
 .container {
-  max-width: 780px;
+  max-width: 820px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -102,7 +102,7 @@ nav {
 .nav-links a {
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: 14px;
+  font-size: 12px;
   transition: color 0.2s ease, text-shadow 0.2s ease;
   position: relative;
   letter-spacing: 0.3px;
@@ -140,8 +140,8 @@ nav {
 
 main {
   background: transparent;
-  min-height: calc(100vh - 64px);
-  padding: 60px 0;
+  /* min-height: calc(100vh - 64px); */
+  /* padding: 60px 0; */
   overflow: auto;
 }
 
@@ -154,7 +154,7 @@ main {
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 20px;
   font-weight: 700;
   margin-bottom: 20px;
   color: var(--text-primary);
@@ -176,7 +176,7 @@ h2 {
 
 /* Hero Section */
 .hero-section {
-  margin-bottom: 60px;
+  /* margin-bottom: 60px; */
 }
 
 .hero-content {
@@ -541,7 +541,7 @@ main > .section:first-child {
   }
 
   main {
-    padding: 40px 0;
+    padding: 0px 0;
   }
 
   h1 {
@@ -562,7 +562,7 @@ main > .section:first-child {
 }
 
 main h1 {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 /* Loading states */
@@ -1046,7 +1046,472 @@ button:focus,
   height: 100%;
 }
 
-/* Reduced motion */
+/* ============================================================
+   KEYFRAME ANIMATIONS
+   ============================================================ */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-18px); }
+}
+
+@keyframes floatDiag {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33%       { transform: translate(10px, -14px) rotate(20deg); }
+  66%       { transform: translate(-8px, -8px) rotate(-10deg); }
+}
+
+@keyframes floatRotate {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50%       { transform: translate(12px, -12px) rotate(45deg); }
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(0,212,255,0.4); }
+  50%       { opacity: 0.7; transform: scale(0.85); box-shadow: 0 0 0 6px rgba(0,212,255,0); }
+}
+
+@keyframes pulseGreen {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(0,255,136,0.5); }
+  50%       { opacity: 0.7; transform: scale(0.85); box-shadow: 0 0 0 6px rgba(0,255,136,0); }
+}
+
+@keyframes photoPulse {
+  0%, 100% { box-shadow: 0 0 40px rgba(0,212,255,0.2), 0 0 80px rgba(123,47,255,0.1), 0 20px 60px rgba(0,0,0,0.5); }
+  50%       { box-shadow: 0 0 60px rgba(0,212,255,0.35), 0 0 100px rgba(123,47,255,0.2), 0 20px 60px rgba(0,0,0,0.5); }
+}
+
+@keyframes rotateBorder {
+  to { --angle: 360deg; }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes badgeFloat {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%       { transform: translateY(-10px) rotate(2deg); }
+}
+
+@keyframes techFloat {
+  0%, 100% { transform: translateY(0) rotate(2deg); }
+  50%       { transform: translateY(-8px) rotate(-2deg); }
+}
+
+@keyframes revealCard {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ============================================================
+   HERO SPLIT LAYOUT
+   ============================================================ */
+
+.hero-split-section {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  /* padding: 80px 0 60px; */
+}
+
+/* LEFT — text */
+.hero-text {
+  animation: fadeInLeft 0.8s ease both;
+}
+
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  margin-bottom: 24px;
+  padding: 7px 16px;
+  border: 1px solid rgba(0,212,255,0.3);
+  border-radius: 999px;
+  background: rgba(0,212,255,0.07);
+  backdrop-filter: blur(8px);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  display: inline-block;
+  flex-shrink: 0;
+  animation: pulseDot 2s ease infinite;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 22px;
+  color: var(--text-primary);
+  /* override old gradient fill */
+  background: none;
+  -webkit-text-fill-color: var(--text-primary);
+}
+
+.gradient-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 440px;
+  margin-bottom: 36px;
+}
+
+/* Stats row */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+  background: var(--accent-gradient-90);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--border-color);
+  flex-shrink: 0;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* RIGHT — photo */
+.hero-photo-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  animation: fadeInRight  0.9s ease 0.2s both;
+}
+
+.hero-photo-frame {
+  position: relative;
+  width: 340px;
+  height: 420px;
+  padding: 3px;
+  border-radius: 36px;
+  background: conic-gradient(from var(--angle, 0deg), #00d4ff 0%, #7b2fff 40%, #00d4ff 60%, rgba(0,212,255,0.1) 100%);
+  animation: rotateBorder 6s linear infinite;
+}
+
+.hero-photo {
+  width: 75%;
+  height: 75%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 33px;
+  display: block;
+  /* animation: photoPulse 5s ease infinite; */
+}
+
+/* Floating "Open to Work" badge */
+.hero-badge {
+  position: absolute;
+  top: 60px;
+  right: -30px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: rgba(0,255,136,0.08);
+  border: 1px solid rgba(0,255,136,0.35);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #00ff88;
+  backdrop-filter: blur(12px);
+  white-space: nowrap;
+  animation: badgeFloat 4s ease infinite;
+  z-index: 2;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00ff88;
+  flex-shrink: 0;
+  animation: pulseGreen 1.5s ease infinite;
+}
+
+/* Floating tech stack pill */
+.hero-tech-pill {
+  position: absolute;
+  top: 0px;
+  right: -30px;
+  padding: 8px 16px;
+  background: rgba(123,47,255,0.1);
+  border: 1px solid rgba(123,47,255,0.3);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #a855f7;
+  backdrop-filter: blur(12px);
+  white-space: nowrap;
+  animation: techFloat 5s ease infinite 1s;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   FLOATING DECORATIVE SHAPES
+   ============================================================ */
+
+.floating-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 4px;
+}
+
+/* Cyan square — top right */
+.shape-1 {
+  width: 16px; height: 16px;
+  background: var(--accent-color);
+  opacity: 0.75;
+  top: 12%; right: 6%;
+  animation: floatY 4s ease infinite;
+}
+
+/* Yellow diamond — upper mid right */
+.shape-2 {
+  width: 13px; height: 13px;
+  background: #ffcc00;
+  opacity: 0.8;
+  top: 8%; right: 28%;
+  transform: rotate(45deg);
+  animation: floatDiag 6s ease infinite 1s;
+}
+
+/* Purple circle — mid right */
+.shape-3 {
+  width: 18px; height: 18px;
+  background: var(--secondary-color);
+  opacity: 0.55;
+  top: 55%; right: 4%;
+  border-radius: 50%;
+  animation: floatRotate 5s ease infinite;
+}
+
+/* Pink/red small square — bottom right */
+.shape-4 {
+  width: 10px; height: 10px;
+  background: #ff4466;
+  opacity: 0.7;
+  bottom: 22%; right: 10%;
+  animation: floatY 7s ease infinite 2s;
+}
+
+/* Cyan dot — left side */
+.shape-5 {
+  width: 8px; height: 8px;
+  background: var(--accent-color);
+  opacity: 0.4;
+  top: 35%; left: 2%;
+  border-radius: 50%;
+  animation: floatY 5s ease infinite 0.5s;
+}
+
+/* Yellow small — bottom left area */
+.shape-6 {
+  width: 11px; height: 11px;
+  background: #ffcc00;
+  opacity: 0.6;
+  bottom: 30%; left: 4%;
+  transform: rotate(20deg);
+  animation: floatDiag 8s ease infinite 3s;
+}
+
+/* ============================================================
+   VIDEO SECTION (below hero)
+   ============================================================ */
+
+.video-section-wrapper {
+  padding: 60px 0 80px;
+  text-align: center;
+}
+
+.video-section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 28px;
+  letter-spacing: -0.02em;
+}
+
+/* ============================================================
+   SCROLL-REVEAL CARDS
+   ============================================================ */
+
+.card-reveal {
+  opacity: 0;
+  animation: revealCard 0.55s ease both;
+}
+
+/* ============================================================
+   HERO SPLIT — RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .hero-split {
+    grid-template-columns: 1fr;
+    /* gap: 48px; */
+    /* padding: 0px 0 0px; */
+    text-align: center;
+  }
+
+  .hero-text {
+    order: 1;
+  }
+
+  .hero-photo-wrap {
+    display: none;
+    /* order: 2; */
+    animation: fadeInUp 0.8s ease both;
+  }
+
+  .hero-photo-frame {
+    width: 240px;
+    height: 300px;
+    border-radius: 28px;
+  }
+
+  .hero-photo {
+    border-radius: 25px;
+  }
+
+  .hero-desc {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-stats {
+    justify-content: center;
+  }
+
+  .hero-ctas {
+    justify-content: center;
+  }
+
+  .hero-badge {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -18px;
+    animation: none;
+  }
+
+  .hero-tech-pill {
+    right: 50%;
+    transform: translateX(50%);
+    top: -18px;
+    animation: none;
+  }
+
+  .hero-title {
+    font-size: 2.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.1rem;
+  }
+
+  .stat-number {
+    font-size: 1.6rem;
+  }
+
+  .hero-photo-frame {
+    width: 200px;
+    height: 250px;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
