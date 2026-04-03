@@ -140,9 +140,6 @@ nav {
 
 main {
   background: transparent;
-  /* min-height: calc(100vh - 64px); */
-  /* padding: 60px 0; */
-  overflow: auto;
 }
 
 .page {
